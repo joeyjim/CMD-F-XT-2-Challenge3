@@ -1,0 +1,60 @@
+.box { grid-area: box; }
+
+
+/* For mobile: */
+
+h1,
+h2,
+p,
+span {
+    /*
+    font-weight: 200;
+    font-size: 3em;
+*/
+    color: black;
+
+}
+
+h1 {
+    font-size: 15px;
+
+}
+
+.container{
+    display: grid;
+    grid-template-areas:
+        'box';  
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    padding: 15px;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For tablets: */
+    
+    h1{
+        font-size: 30px
+    }
+    
+    p, span {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    /* For desktop: */
+     .container {
+        display: grid;
+        grid-template-areas:
+        'box';  
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }  
+    
+    h1{
+        font-size: 20px;
+    }
+    p, span {
+        font-size: 10px;
+    }
+}
