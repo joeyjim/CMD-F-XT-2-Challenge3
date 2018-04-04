@@ -25,6 +25,28 @@ b{color: white;}
    
 }
 
+#markerLayer img {
+  animation: pulse .7s infinite alternate;
+    -webkit-animation: pulse .7s infinite alternate;
+    transform-origin: center;
+    -webkit-transform-origin: center;
+}
+
+
+/* Animaitons */
+keyframes pulse{
+    to { 
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);  
+    }
+}
+
+@-webkit-keyframes pulse{
+    to { 
+        transform: scale(0.7);
+        -webkit-transform: scale(0.7);  
+    }
+}
 
 
 

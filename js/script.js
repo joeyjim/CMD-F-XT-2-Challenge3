@@ -20,9 +20,12 @@ function initMap() {
      
     var image = {
     url: "https://i.imgur.com/QUSoLHy.png", // url
-    scaledSize: new google.maps.Size(75, 75), // scaled size
+   
+    scaledSize: new google.maps.Size(100, 100), // scaled size
     origin: new google.maps.Point(0,0), // origin
-    anchor: new google.maps.Point(0, 0) // anchor
+    anchor: new google.maps.Point(50, 0) // anchor
+        
+      
 };
 
      var contentString = '<div id="content">'+
@@ -38,17 +41,32 @@ function initMap() {
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
-     
+  
       var marker = new google.maps.Marker({
       position: dubaiAirport,
       map: map,
        title:"Landing Spot",
           animation: google.maps.Animation.DROP,
-          icon:image
+          icon:image,
+          optimized: false
     });
+    
     marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
+    
+    
+       var myoverlay = new google.maps.OverlayView();
+    myoverlay.draw = function () {
+        this.getPanes().markerLayer.id='markerLayer';
+    }; 
+    myoverlay.setMap(map);
+    
+    
+    
+   
+    
+
     getAPIdata();   
 }
 
@@ -113,28 +131,3 @@ function onAPISucces(response) {
 		starShips.innerHTML = starShipList[i].name;
 	}
 }
-
-//function onAPISucces(response) {
-//
-//	var weatherList = response.list;
-//	var weatherBox = document.getElementById('weather');
-//
-//	for(var i=0; i< weatherList.length; i++){
-//		//console.log(weatherList[i].main.temp - 273.15);
-//
-//		var dateTime = new Date(weatherList[i].dt_txt);
-//		var date = formDate(dateTime);
-//		var time = formTime(dateTime);
-//		var temp = Math.floor(weatherList[i].main.temp - 273.15);
-//		var iconUrl = 'http://openweathermap.org/img/w/'+weatherList[i].weather[0].icon+'.png';
-//
-//		forecastMessage =  '<div class="forecastMoment">';
-//		forecastMessage +=   '<div class="date"> '+date+' </div>';
-//		forecastMessage +=	 '<div class="time"> '+ time +' </div>';
-//		forecastMessage +=	 '<div class="temp"> '+temp+'&#176;C </div>';
-//		forecastMessage +=	 '<div class="icon"> <img src="'+iconUrl+'"> </div>';
-//		forecastMessage += '</div>';
-//
-//		weatherBox.innerHTML += forecastMessage;
-//	}
-//}
